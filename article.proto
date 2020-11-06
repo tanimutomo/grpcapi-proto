@@ -11,30 +11,30 @@ option ruby_package = "Grpcs::GrpcapiGoServer::Article";
 import "google/protobuf/timestamp.proto";
 
 service ArticleService {
-  rpc GetArticle (GetRequest) returns (GetResponse) {}
-  rpc ListArticles (ListRequest) returns (ListResponse) {}
-  rpc CreateArticle (CreateRequest) returns (CreateResponse) {}
+  rpc GetArticle (GetArticleRequest) returns (GetArticleResponse) {}
+  rpc ListArticles (ListArticlesRequest) returns (ListArticlesResponse) {}
+  rpc CreateArticle (CreateArticleRequest) returns (CreateArticleResponse) {}
 }
 
-message GetRequest {
+message GetArticleRequest {
   uint64 id = 1;
 }
 
-message GetResponse {
+message GetArticleResponse {
   Article article = 1;
 }
 
-message ListRequest {}
+message ListArticlesRequest {}
 
-message ListResponse {
+message ListArticlesResponse {
   repeated Article articles = 1;
 }
 
-message CreateRequest {
+message CreateArticleRequest {
   string title = 1;
 }
 
-message CreateResponse {
+message CreateArticleResponse {
   Article article = 1;
 }
 
