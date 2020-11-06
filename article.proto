@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package article;
+
+// server
+option go_package = "github.com/tanimutomo/grpcapi-go-server/pkg/grpcs/article";
+
+// client
+option ruby_package = "Grpcs::GrpcapiGoServer::Article";
+
+import "google/protobuf/timestamp.proto";
+
+service ArticleService {
+  rpc GetArticle (GetRequest) returns (GetResponse) {}
+  rpc ListArticles (ListRequest) returns (ListResponse) {}
+  rpc CreateArticle (CreateRequest) returns (CreateResponse) {}
+}
+
+message GetRequest {
+  uint64 id = 1;
+}
+
+message GetResponse {
+  Article article = 1;
+}
+
+message ListRequest {}
+
+message ListResponse {
+  repeated Article articles = 1;
+}
+
+message CreateRequest {
+  string title = 1;
+}
+
+message CreateResponse {
+  Article article = 1;
+}
+
+message Article {
+  uint64 id = 1;
+  string title = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
